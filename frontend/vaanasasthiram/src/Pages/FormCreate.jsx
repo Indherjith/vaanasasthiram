@@ -1,12 +1,13 @@
 import { Box, FormControl, FormHelperText, FormLabel, Input, Select, VStack } from '@chakra-ui/react';
-import { feedinput, luknam } from '../Redux/action';
+import { feedinput } from '../Redux/action';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const FormCreate=()=>{
 
     const state = useSelector(store=>store)
+    const navigate = useNavigate();
 
-    var currentdate = new Date();
     const dispatch = useDispatch();
     const [name,setName] = useState("");
     const [Anazi,setAnazi] = useState();
@@ -18,14 +19,16 @@ const FormCreate=()=>{
     const [rasi,setRasi] = useState();
     const [rasiNazi,setRasiNazi] = useState();
     const [rasiVina,setRasiVina] = useState();
+    const [maandhi,setMaandhi] = useState();
 
     const handleInput=async()=>{
         const payload = {
             name,Anazi,Avina,Bhour,
             Bmins,day,gender,rasi,
-            rasiNazi,rasiVina
+            rasiNazi,rasiVina,maandhi
         }
-        await dispatch(feedinput(payload))
+        dispatch(feedinput(payload))
+        // navigate("/result")
     }
 
     useEffect(()=>{
@@ -33,7 +36,7 @@ const FormCreate=()=>{
     },[state])
 
   return (
-    <Box maxW={'480px'} padding={'20px'} margin={'auto'} marginTop={'20px'} boxShadow={'1px 1px 3px 3px grey'} >
+    <Box maxW={'480px'} padding={'20px'} margin={'auto'} paddingTop={'20px'} boxShadow={'1px 1px 3px 3px grey'} background='radial-gradient(skyblue,white)' >
         <h1 style={{marginTop:"10px",fontWeight:"bold",backgroundColor:'PURPLE',color:"white", padding:"20px 0px"}}><i>NEW JADHAGAM / புதிய ஜாதகம்</i></h1>
         <VStack marginTop={'30px'} >
 
@@ -92,6 +95,13 @@ const FormCreate=()=>{
             </Select>
             <Input type='number' onChange={(e)=>setRasiNazi(e.target.value)}  width={'60px'} />
             <Input type='number' onChange={(e)=>setRasiVina(e.target.value)}  width={'60px'} />
+            </FormControl>
+
+            <FormControl isRequired mb={'40px'} >
+            <Select placeholder='Select MaandhiPeriod / மாந்தி காலம்' onChange={(e)=>setMaandhi(e.target.value)} >
+                <option value='pagal'>day/பகல்</option>
+                <option value='iravu'>night/இரவு</option>
+            </Select>
             </FormControl>
 
             <FormControl isRequired mb={'40px'} >
