@@ -28,11 +28,11 @@ const FormCreate=()=>{
             rasiNazi,rasiVina,maandhi
         }
         dispatch(feedinput(payload))
-        // navigate("/result")
+        navigate("/result")
     }
 
     useEffect(()=>{
-        console.log(state);
+        console.log(state);        
     },[state])
 
   return (

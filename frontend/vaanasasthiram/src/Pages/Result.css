@@ -1,0 +1,55 @@
+.ques{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.griding{
+    width:80%;
+    margin: auto;
+}
+
+.ques>p{
+    border:1px solid black;
+    border-bottom: none;
+    text-align: left;
+    padding: 10px;
+    padding-left: 50px;
+    font-weight: bold;
+
+}
+
+@media all and (max-width:450px){
+    .ques{
+        grid-template-columns: 2fr 3fr;
+    }
+    .ques>p{
+        padding:3px;
+    }
+}
+
+.ques:last-child{
+    border-bottom: 1px solid black;
+}
+
+.ques>p:last-child{
+    border-left: none;
+}
+
+button{
+    margin-top: 50px;
+}
+
+button>h1{
+    background-color: blue;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color:white;
+    font-weight: bold;
+} 
+
+button>h1:hover{
+    background-color: white;
+    border:1px solid blue;
+    color:blue;
+}
+

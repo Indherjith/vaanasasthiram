@@ -40,6 +40,7 @@ export const feedinput = (payload)=>(dispatch)=>{
     else{
         remTime=(Number(totBirth)+Number(1440))-Number(totsun);
     }
+    // console.log(remTime);
 
     // dispatching gender
     dispatch({type:types.UPDATE_GENDER,payload:values.gender})
@@ -49,38 +50,90 @@ export const feedinput = (payload)=>(dispatch)=>{
     // console.log(orairound); 
     let Jnavi=0;
 
-    if(((day ==="Monday"||day ==="Wednesday"||day ==="Friday") && (values.gender == "female" && orairound%2 == 1)) || ((day ==="Tuesday" || day ==="Sunday" || day ==="Thursday" || day ==="Saturday") && (values.gender == "male" && orairound%2 == 1))){
-        // console.log("working");
-        let naz = Math.floor( Number(remTime*2.5)/60);
-        let vin = Math.round(Number(remTime*2.5)-(naz*60))
-        Jnavi=Number(naz*60)+Number(vin)
-        dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
-        dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
-    }
-    else{
-        // console.log("else");
-        let oraiRemainder =Number((remTime*2.5)%75);
-        let naz;
-        let vin;
-        if(oraiRemainder>=37.5){
-            // console.log("big");
-            remTime = (orairound*75)+5;
-            naz = Math.floor( Number(remTime)/60);
-            vin = Math.round(Number(remTime)-(naz*60))
+
+
+    if((day === "Sunday" || day === "Tuesday" || day === "Thursday" || day === "Saturday")){
+        if(values.gender == "male" && orairound%2 == 1){
+            // console.log("force1 true");
+            let naz = Math.floor( Number(remTime*2.5)/60);
+            let vin = Math.round(Number(remTime*2.5)-(naz*60))
+            Jnavi=Number(naz*60)+Number(vin)
+            dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
+            dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
+        }
+        else if(values.gender == "female" && orairound%2 == 0){
+            // console.log("force1 true");
+            let naz = Math.floor( Number(remTime*2.5)/60);
+            let vin = Math.round(Number(remTime*2.5)-(naz*60))
+            Jnavi=Number(naz*60)+Number(vin)
+            dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
+            dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
         }
         else{
-            // console.log("small");
-            remTime = ((Number(orairound)-1)*75)-5;
-            console.log(remTime);
-            naz = Math.floor( Number(remTime)/60);
-            vin = Math.round(Number(remTime)-(naz*60))
+            // console.log("force 1 flase");
+            let oraiRemainder =Number((remTime*2.5)%75);
+            let naz;
+            let vin;
+            if(oraiRemainder>=37.5){
+                // console.log("big");
+                remTime = (orairound*75)+5;
+                naz = Math.floor( Number(remTime)/60);
+                vin = Math.round(Number(remTime)-(naz*60))
+            }
+            else{
+                // console.log("small");
+                remTime = ((Number(orairound)-1)*75)-5;
+                // console.log(remTime);
+                naz = Math.floor( Number(remTime)/60);
+                vin = Math.round(Number(remTime)-(naz*60))
+            }
+            // console.log(naz,vin);
+            Jnavi=Number(naz*60)+Number(vin)
+            dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
+            dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
         }
-        // console.log(naz,vin);
-        Jnavi=Number(naz*60)+Number(vin)
-        dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
-        dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
     }
-    console.log(Jnavi);
+    else{
+        if(values.gender == "female" && orairound%2 == 1){
+            // console.log("force1 true");
+            let naz = Math.floor( Number(remTime*2.5)/60);
+            let vin = Math.round(Number(remTime*2.5)-(naz*60))
+            Jnavi=Number(naz*60)+Number(vin)
+            dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
+            dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
+        }
+        else if(values.gender == "male" && orairound%2 == 0){
+            // console.log("force1 true");
+            let naz = Math.floor( Number(remTime*2.5)/60);
+            let vin = Math.round(Number(remTime*2.5)-(naz*60))
+            Jnavi=Number(naz*60)+Number(vin)
+            dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
+            dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
+        }
+        else{
+            // console.log("force 1 flase");
+            let oraiRemainder =Number((remTime*2.5)%75);
+            let naz;
+            let vin;
+            if(oraiRemainder>=37.5){
+                // console.log("big");
+                remTime = (orairound*75)+5;
+                naz = Math.floor( Number(remTime)/60);
+                vin = Math.round(Number(remTime)-(naz*60))
+            }
+            else{
+                // console.log("small");
+                remTime = ((Number(orairound)-1)*75)-5;
+                console.log(remTime);
+                naz = Math.floor( Number(remTime)/60);
+                vin = Math.round(Number(remTime)-(naz*60))
+            }
+            // console.log(naz,vin);
+            Jnavi=Number(naz*60)+Number(vin)
+            dispatch({type:types.UPDATE_JANANA_NAZIGAI,payload:naz})
+            dispatch({type:types.UPDATE_JANANA_VINADI,payload:vin})
+        }
+    }
 
     // console.log(values.rasi,values.rasiNazi,values.rasiVina);
     const lakna = ["மேஷம்","ரிஷபம்","மிதுனம்","கடகம்","சிம்மம்","கன்னி","துலாம்","விருச்சகம்","தனுசு","மகரம்","கும்பம்","மீனம்"]
@@ -93,7 +146,7 @@ export const feedinput = (payload)=>(dispatch)=>{
         index=index%12;
         madhaIrupu+=Thirukovilur[++index].ssec
         laknam=lakna[index]
-        console.log(madhaIrupu,Jnavi,laknam,index);
+        // console.log(madhaIrupu,Jnavi,laknam,index);
         if(index == 11){
             index=-1;
         }
@@ -120,25 +173,36 @@ export const feedinput = (payload)=>(dispatch)=>{
     let newDay=0;
     if(day === "Monday"){
         newDay=1;
-    }else if(day === "Tuesday"){newDay=2} else if(day === "wednesday"){newDay=3}else if(day === "Thursday"){newDay=4} else if(day === "Friday"){newDay=5} else if(day === "Saturday"){newDay=6}
+    }else if(day === "Tuesday"){newDay=2}
+    else if(day === "Wednesday")
+    {newDay=3}
+    else if(day === "Thursday"){newDay=4}
+    else if(day === "Friday"){newDay=5}
+    else if(day === "Saturday"){newDay=6}
+    else if(day === "Sunday"){newDay=0}
 
     let MaandhiIndex = payload.rasi;
     let Maandhi = lakna[MaandhiIndex];
     let MaandhimadhaIrupu = Number(payload.rasiNazi*60)+Number(payload.rasiVina);
     let kuliVina = 0;
-    if(values.maandhi === "pagal"){
+    if(values.maandhi == "pagal"){
         kuliVina = kuliga[newDay].pagal
     }
     else{
-        kuliVina = (kuliga[newDay].iravu)+(Number(payload.Anazi *60)+Number(payload.Avina))
+        kuliVina = kuliga[newDay].iravu
+        kuliVina+=(Number(payload.Anazi*60)+Number(payload.Avina));
+        console.log(kuliVina);
     }
-    // console.log(kuliVina);
+    console.log(kuliVina);
     while(MaandhimadhaIrupu<kuliVina){
         MaandhiIndex=MaandhiIndex%12;
         MaandhimadhaIrupu+=Thirukovilur[++MaandhiIndex].ssec
         Maandhi = lakna[MaandhiIndex]
+        if(MaandhiIndex == 11){
+            MaandhiIndex=-1;
+        }
     }
-    console.log(MaandhiIndex);
+    // console.log(MaandhiIndex);
     let MaandhiIrupu = MaandhimadhaIrupu-kuliVina;
     let MaandhiSel = Thirukovilur[MaandhiIndex].ssec - MaandhiIrupu;
 
