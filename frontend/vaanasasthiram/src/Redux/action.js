@@ -141,15 +141,19 @@ export const feedinput = (payload)=>(dispatch)=>{
     // console.log(index);
     let laknam = lakna[index];
     let madhaIrupu = Number(payload.rasiNazi*60)+Number(payload.rasiVina);
-    // console.log(madhaIrupu);
-    while(madhaIrupu<Jnavi){
-        index=index%12;
-        madhaIrupu+=Thirukovilur[++index].ssec
-        laknam=lakna[index]
-        // console.log(madhaIrupu,Jnavi,laknam,index);
+    console.log(madhaIrupu,index);
+    while(madhaIrupu<Jnavi){ 
         if(index == 11){
             index=-1;
         }
+        else{
+            index=index%12;
+            madhaIrupu+=Thirukovilur[++index].ssec
+            laknam=lakna[index]
+        }      
+        
+        // console.log(madhaIrupu,Jnavi,laknam,index);
+        
     }
     let laknaIrupu = madhaIrupu-Jnavi;
     let laknaSel = Thirukovilur[index].ssec-laknaIrupu;
@@ -195,12 +199,15 @@ export const feedinput = (payload)=>(dispatch)=>{
     }
     console.log(kuliVina);
     while(MaandhimadhaIrupu<kuliVina){
-        MaandhiIndex=MaandhiIndex%12;
-        MaandhimadhaIrupu+=Thirukovilur[++MaandhiIndex].ssec
-        Maandhi = lakna[MaandhiIndex]
         if(MaandhiIndex == 11){
             MaandhiIndex=-1;
         }
+        else{
+            MaandhiIndex=MaandhiIndex%12;
+            MaandhimadhaIrupu+=Thirukovilur[++MaandhiIndex].ssec
+            Maandhi = lakna[MaandhiIndex]
+        }
+        
     }
     // console.log(MaandhiIndex);
     let MaandhiIrupu = MaandhimadhaIrupu-kuliVina;
@@ -210,5 +217,94 @@ export const feedinput = (payload)=>(dispatch)=>{
     Maandhi = `${Maandhi} (${Thirukovilur[MaandhiIndex].paadha[MaandhiPaadham]})`
     dispatch({type:types.UPDATE_KULIGAN,payload:Maandhi})
 }
+
+export const cond1=(payload)=>(dispatch)=>{
+    // console.log("cond1",payload);
+    let mun1 = Number(payload.m1.nazhigai * 60) + Number(payload.m1.vinadi)
+    let that1 = Number(payload.t1.nazhigai * 60) + Number(payload.t1.vinadi)
+    let next1 = Number(payload.n1.nazhigai * 60) + Number(payload.n1.vinadi)
+    let Jnatch;
+    let Aapnazi;
+    let Natchsel;
+    let NatchIrupu;
+    let padham1ku;
+    let Natchathiram;
+    let padham;
+
+    // console.log(payload.Janana,mun1,that1,next1);
+    if(payload.Janana < that1){
+        Jnatch = payload.t1.natchathiram
+        Aapnazi = (3600-Number(mun1))+that1;
+        padham1ku = Aapnazi/4;
+        Natchsel = (3600-Number(mun1))+payload.Janana;
+        NatchIrupu = (Aapnazi-Natchsel)
+        if(padham1ku > Natchsel){
+               padham = 1;
+            Natchathiram = Jnatch+" 1ம் பாதம்"
+        }
+        else if(padham1ku*2 > Natchsel){
+               padham = 2;
+            Natchathiram = Jnatch+" 2ம் பாதம்"
+        }
+        else if(padham1ku*3 > Natchsel){
+                padham = 3;
+            Natchathiram = Jnatch+" 3ம் பாதம்"
+        }
+        else{
+                padham=4;
+            Natchathiram = Jnatch+" 4ம் பாதம்"
+        }
+    }
+    else{
+        Jnatch = payload.n1.natchathiram
+        Aapnazi = (3600-Number(that1))+next1;
+        padham1ku = Aapnazi/4;
+        Natchsel=payload.Janana - Number(that1);
+        NatchIrupu = (Aapnazi-Natchsel)
+        if(padham1ku > Natchsel){
+               padham = 1;
+            Natchathiram = Jnatch+" 1ம் பாதம்"
+        }
+        else if(padham1ku*2 > Natchsel){
+               padham = 2;
+            Natchathiram = Jnatch+" 2ம் பாதம்"
+        }
+        else if(padham1ku*3 > Natchsel){
+                padham = 3;
+            Natchathiram = Jnatch+" 3ம் பாதம்"
+        }
+        else{
+                padham=4;
+            Natchathiram = Jnatch+" 4ம் பாதம்"
+        }
+    }
+
+    const lakna = ["மேஷம்","ரிஷபம்","மிதுனம்","கடகம்","சிம்மம்","கன்னி","துலாம்","விருச்சகம்","தனுசு","மகரம்","கும்பம்","மீனம்"]
+
+
+    for(let i=0;i<Thirukovilur.length;i++){
+        for(let j=0;j<Thirukovilur[i].paadha.length;j++){
+            if(`${Jnatch}-${padham}` == Thirukovilur[i].paadha[j]){
+                Natchathiram = `${lakna[i]} (${Natchathiram})`
+            }
+        }
+    }
+
+    Aapnazi = `${Math.floor(Aapnazi/60)}-${Aapnazi%60}`;
+    Natchsel = `${Math.floor(Natchsel/60)}-${Natchsel%60}`;
+    NatchIrupu = `${Math.floor(NatchIrupu/60)}-${NatchIrupu%60}`;
+
+    dispatch({type:types.NATCH,payload:Natchathiram})
+    dispatch({type:types.AADHI,payload:Aapnazi})
+    dispatch({type:types.NATSEL,payload:Natchsel})
+    dispatch({type:types.NATIRUPU,payload:NatchIrupu})
+
+    console.log(Jnatch,"Aadhi Andha ParamaNazhigai",Aapnazi);
+    console.log("padham 1ku",padham1ku);
+    console.log(Jnatch,"sel",Natchsel);
+    console.log(Jnatch,"irupu",NatchIrupu);
+    console.log(Natchathiram);
+}
+
 
 

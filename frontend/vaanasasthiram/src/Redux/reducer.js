@@ -15,7 +15,11 @@ const initState = {
     LaknaIrupu:0,
     LaknaSel:0,
     Luknam:"",
-    Kuligan:""
+    Kuligan:"",
+    Natch:"",
+    NatIru:"",
+    NatSel:"",
+    Aadhi:""
 }
 
 export const reducer = (state=initState,action)=>{
@@ -51,6 +55,14 @@ export const reducer = (state=initState,action)=>{
             return {...state,Luknam:payload}
         case types.UPDATE_KULIGAN:
             return {...state,Kuligan:payload}
+        case types.NATCH:
+            return {...state,Natch:payload}
+        case types.NATIRUPU:
+            return {...state,NatIru:payload}
+        case types.NATSEL:
+            return {...state,NatSel:payload}
+        case types.AADHI:
+            return {...state,Aadhi:payload}
         default:
             return {...state};
     }

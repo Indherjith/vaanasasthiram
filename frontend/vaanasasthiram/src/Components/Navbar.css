@@ -1,0 +1,9 @@
+.nav{
+    display: flex;
+    background-color: black;
+    color:white;
+}
+
+.logo img{
+    border-radius: 50%;
+}

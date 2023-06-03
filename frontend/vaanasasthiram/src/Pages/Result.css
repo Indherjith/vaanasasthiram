@@ -4,7 +4,12 @@
 }
 
 .griding{
-    width:80%;
+    width: 80%;
+    margin: auto;
+}
+
+.griding div{
+    width:90%;
     margin: auto;
 }
 
@@ -19,11 +24,24 @@
 }
 
 @media all and (max-width:450px){
+    .griding{
+        width:100%;
+        height:auto;
+        margin: auto;
+    }
+    .griding div{
+        width:90%;
+        margin: auto;
+    }
     .ques{
         grid-template-columns: 2fr 3fr;
     }
     .ques>p{
         padding:3px;
+    }
+    .ques>p>b{
+        font-weight: lighter;
+        font-size: 10px;
     }
 }
 

@@ -1,5 +1,6 @@
 import { Box, FormControl, FormHelperText, FormLabel, Input, Select, VStack } from '@chakra-ui/react';
 import { feedinput } from '../Redux/action';
+import { Button } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +29,7 @@ const FormCreate=()=>{
             rasiNazi,rasiVina,maandhi
         }
         dispatch(feedinput(payload))
-        navigate("/result")
+        navigate("/rasi")
     }
 
     useEffect(()=>{
@@ -105,7 +106,8 @@ const FormCreate=()=>{
             </FormControl>
 
             <FormControl isRequired mb={'40px'} >
-                <Input type='submit' onClick={handleInput} color={'blue'} fontWeight={'bold'} border={'1px solid blue'} maxW={'120px'} />
+                <Button onClick={handleInput} color={'blue'} fontWeight={'bold'} border={'1px solid blue'} maxW={'120px'}>Next</Button>
+                {/* <Input type='submit' onClick={handleInput} color={'blue'} fontWeight={'bold'} border={'1px solid blue'} maxW={'120px'} /> */}
             </FormControl>
 
         </VStack>

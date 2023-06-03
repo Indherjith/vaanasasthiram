@@ -15,7 +15,8 @@ const Result = () => {
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
       const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
+      const imgHeight = (canvas.height);
+      // const imgHeight = 2*(pdfHeight)
       const ratio = Math.min(pdfWidth/(imgWidth) , pdfHeight/(imgHeight));
       const imgX =(pdfWidth - imgWidth * ratio)/2;
       const imgY = 30;
@@ -29,45 +30,63 @@ const Result = () => {
     <div>
       <h1>Result</h1>
       <div className='griding' ref={pdfRef}>
+        <div>
         <div className='ques'>
-          <p><b>Name</b></p>
+          <p><b>பெயர்</b></p>
           <p><b>{state.Name}</b></p>
         </div>
         <div className='ques'>
-          <p>Gender</p>
-          <p>{state.Gender}</p>
+          <p><b>பால்வகை</b></p>
+          <p><b>{state.Gender}</b></p>
         </div>
         <div className='ques'>
-          <p>Day</p>
-          <p>{state.Day}</p>
+          <p><b>நாள்</b></p>
+          <p><b>{state.Day}</b></p>
         </div>
         <div className='ques'>
-          <p>SunRaise</p>
-          <p>{`${state.SunHour} - ${state.SunMin}`} </p>
+          <p><b>சூரிய உதயம்</b></p>
+          <p><b>{`${state.SunHour} - ${state.SunMin}`}</b> </p>
         </div>
         <div className='ques'>
-          <p>Agasu</p>
-          <p>{`${state.AgasuNazhigai} - ${state.AgasuVinadi}`}</p>
+          <p><b>அகசு</b></p>
+          <p><b>{`${state.AgasuNazhigai} - ${state.AgasuVinadi}`}</b></p>
         </div>
         <div className='ques'>
-          <p>Birth Time</p>
-          <p>{state.BirthHour>12 ? `${state.BirthHour - 12} - ${state.BirthMins} Pm` : `${state.BirthHour} - ${state.BirthMins} Am`}</p>
+          <p><b>பிறந்த நேரம்</b></p>
+          <p><b>{state.BirthHour>12 ? `${state.BirthHour - 12} - ${state.BirthMins} Pm` : `${state.BirthHour} - ${state.BirthMins} Am`}</b></p>
         </div>
         <div className='ques'>
-          <p><b>JananaNazhigai</b></p>
+          <p><b>ஜனனநழிகை</b></p>
           <p><b>{`${state.JananaNazhigai} - ${state.JananaVinadi}`} </b></p>
         </div>
         <div className='ques'>
-          <p><b>Laknam</b></p>
+          <p><b>லக்னம்</b></p>
           <p><b>{state.Luknam} </b></p>
         </div>
         <div className='ques'>
-          <p>Laknam Paadham 1 ku</p>
-          <p>{Math.floor(((state.LaknaIrupu + state.LaknaSel)/4)/60)} - {((state.LaknaIrupu + state.LaknaSel)/4)%60} </p>
+          <p><b>லக்னம் பாதம் 1 கு</b></p>
+          <p><b>{Math.floor(((state.LaknaIrupu + state.LaknaSel)/4)/60)} - {((state.LaknaIrupu + state.LaknaSel)/4)%60} </b></p>
         </div>
         <div className='ques'>
-          <p><b>Maandhi</b></p>
+          <p><b>மாந்தி</b></p>
           <p><b>{state.Kuligan} </b></p>
+        </div>
+        <div className='ques'>
+          <p><b>நச்சத்திரம்</b></p>
+          <p><b>{state.Natch} </b></p>
+        </div>
+        <div className='ques'>
+          <p><b>ஆதிஅந்த பரமநாழிகை </b></p>
+          <p><b>{state.Aadhi} </b></p>
+        </div>
+        <div className='ques'>
+          <p><b>நட்சத்திர செல்</b></p>
+          <p><b>{state.NatSel} </b></p>
+        </div>
+        <div className='ques'>
+          <p><b>நட்சத்திர இருப்பு</b></p>
+          <p><b>{state.NatIru} </b></p>
+        </div>
         </div>
       </div>
       <button onClick={()=>handleDownload()} ><h1>Download Jadhagam</h1></button>

@@ -21,3 +21,8 @@ export const UPDATE_KULIGAN = "UPDATE_KULIGAN"
 export const LAKNAM_IRUPU = "LAKNAM_IRUPU";
 export const LAKNAM_SEL = "LAKNAM_SEL";
 export const UPDATE_LUKNAM = "UPDATE_LUKNAM"; 
+
+export const NATCH = "NATCH";
+export const NATIRUPU  = "NATIRUPU";
+export const NATSEL = "NATSEL"; 
+export const AADHI = "AADHI";

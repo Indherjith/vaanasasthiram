@@ -7,6 +7,7 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import { ChakraProvider } from "@chakra-ui/react"
 import { store } from './Redux/store';
+import { ProSidebarProvider } from 'react-pro-sidebar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     <ChakraProvider>
       <BrowserRouter>
         <Provider store = {store}>
-          <App />
+          <ProSidebarProvider>
+            <App />
+          </ProSidebarProvider>          
         </Provider>
       </BrowserRouter>   
     </ChakraProvider> 
