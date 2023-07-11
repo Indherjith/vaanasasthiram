@@ -26,3 +26,6 @@ export const NATCH = "NATCH";
 export const NATIRUPU  = "NATIRUPU";
 export const NATSEL = "NATSEL"; 
 export const AADHI = "AADHI";
+
+export const NATPA1 = "NATPA1";
+export const THISAI  = "THISAI";

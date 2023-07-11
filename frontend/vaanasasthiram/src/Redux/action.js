@@ -1,6 +1,6 @@
 import * as types from "./actionType";
 import { Thirukovilur } from "../Components/AmsamBase"
-
+// import { backgroundRepeat } from "html2canvas/dist/types/css/property-descriptors/background-repeat";
 
 export const feedinput = (payload)=>(dispatch)=>{
 
@@ -289,11 +289,20 @@ export const cond1=(payload)=>(dispatch)=>{
             }
         }
     }
+    let natpa = Aapnazi/4;
+    let natpa1 = `${Math.floor(natpa/60)}-${natpa%60}`
+    console.log(natpa1); 
+
+    let dhisa = disairupu(Jnatch,NatchIrupu,Aapnazi);
 
     Aapnazi = `${Math.floor(Aapnazi/60)}-${Aapnazi%60}`;
     Natchsel = `${Math.floor(Natchsel/60)}-${Natchsel%60}`;
     NatchIrupu = `${Math.floor(NatchIrupu/60)}-${NatchIrupu%60}`;
 
+    
+
+    dispatch({type:types.THISAI,payload:dhisa})
+    dispatch({type:types.NATPA1,payload:natpa1})
     dispatch({type:types.NATCH,payload:Natchathiram})
     dispatch({type:types.AADHI,payload:Aapnazi})
     dispatch({type:types.NATSEL,payload:Natchsel})
@@ -306,5 +315,154 @@ export const cond1=(payload)=>(dispatch)=>{
     console.log(Natchathiram);
 }
 
+const disairupu=(natsearch,NatchIrupu,Aapa)=>{
+    console.log("work",natsearch,NatchIrupu,Aapa);
+    let bagavan="";
+    let period=0;
+    switch(natsearch){
+        case "கிருத்திகை":
+            bagavan = "சூரிய திசை"
+            period=6;
+            break;   
+
+        case "உத்திரம்":
+            bagavan = "சூரிய திசை"
+            period=6;
+            break;
+
+        case "உத்திராடம்" :
+            bagavan = "சூரிய திசை"
+            period=6;
+            break;
+
+        case "ரோகிணி":
+            bagavan = "சந்திர திசை"
+            period=10;
+            break;
+
+        case "ஹஸ்தம்":
+            bagavan = "சந்திர திசை"
+            period=10;
+            break;
+
+        case "திருவோணம்":
+            bagavan = "சந்திர திசை"
+            period=10;
+            break;
+
+        case "மிருகசீரிசம்":
+            bagavan = "செவ்வாய் திசை"
+            period=7;
+            break;
+
+        case "சித்திரை":
+            bagavan = "செவ்வாய் திசை"
+            period=7;
+            break;
+
+        case "அவிட்டம்" :
+            bagavan = "செவ்வாய் திசை"
+            period=7;
+            break;
+
+        case "திருவாதிரை":
+            bagavan = "ராகு திசை";
+            period=18;
+            break;
+
+        case "சுவாதி":
+            bagavan = "ராகு திசை";
+            period=18;
+            break;
+        
+        case "சதயம்" :
+            bagavan = "ராகு திசை";
+            period=18;
+            break;
+
+        case "புனர்பூசம்":
+            bagavan="குரு திசை";
+            period=16;
+            break;
+
+        case "விசாகம்":
+            bagavan="குரு திசை";
+            period=16;
+            break;
+
+        case "புரட்டாதி" :
+            bagavan="குரு திசை";
+            period=16;
+            break;
+
+        case "பூசம்" :
+            bagavan="சனி திசை";
+            period=19;
+            break;
+        case "அனுஷம்" :
+            bagavan="சனி திசை";
+            period=19;
+            break;
+        case "உத்திரட்டாதி" :
+            bagavan="சனி திசை";
+            period=19;
+            break;
+
+        case "ஆயில்யம்":
+            bagavan = "புதன் திசை";
+            period=17;
+            break;
+
+        case "கேட்டை":
+            bagavan = "புதன் திசை";
+            period=17;
+            break;
+
+        case "ரேவதி" :
+            bagavan = "புதன் திசை";
+            period=17;
+            break;
+
+        case "அஸ்வினி":
+            bagavan = "கேது திசை";
+            period=7;
+            break;
+
+        case "மகம்":
+            bagavan = "கேது திசை";
+            period=7;
+            break;
+
+        case "மூலம்" :
+            bagavan = "கேது திசை";
+            period=7;
+            break;
+
+        case "பரணி":
+            bagavan = "சுக்கிர திசை";
+            period = 20;
+            break;
+        case "பூரம்":
+            bagavan = "சுக்கிர திசை";
+            period = 20;
+            break;
+        case "பூராடம்" :
+            bagavan = "சுக்கிர திசை";
+            period = 20;
+            break;
+
+        default:
+            bagavan="notdefined";
+            break;
+    }
+    let asper = NatchIrupu*period;
+    let varusham = Math.floor(asper/Aapa);
+    let masam = Math.floor(((asper%Aapa)*12)/Aapa);
+    let naal = Math.floor(((((asper%Aapa)*12)%Aapa)*30)/Aapa);
+    let nazi = Math.floor(((((((asper%Aapa)*12)%Aapa)*30)%Aapa)*60)/Aapa);
+
+    return `${bagavan} ${varusham}-வருஷம் ${masam}-மாசம் ${naal}-நாள் ${nazi}-நழிகை`;
+    
+}
 
 

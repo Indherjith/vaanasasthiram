@@ -19,7 +19,9 @@ const initState = {
     Natch:"",
     NatIru:"",
     NatSel:"",
-    Aadhi:""
+    Aadhi:"",
+    Natpa1:"",
+    Thisai:""
 }
 
 export const reducer = (state=initState,action)=>{
@@ -63,6 +65,10 @@ export const reducer = (state=initState,action)=>{
             return {...state,NatSel:payload}
         case types.AADHI:
             return {...state,Aadhi:payload}
+        case types.NATPA1:
+            return {...state,Natpa1:payload}
+        case types.THISAI:
+            return {...state,Thisai:payload}
         default:
             return {...state};
     }

@@ -87,6 +87,14 @@ const Result = () => {
           <p><b>நட்சத்திர இருப்பு</b></p>
           <p><b>{state.NatIru} </b></p>
         </div>
+        <div className='ques'>
+          <p><b>நட்சத்திர பாதம் 1 கு</b></p>
+          <p><b>{state.Natpa1} </b></p>
+        </div>
+        <div className='ques'>
+          <p><b>திசை இருப்பு</b></p>
+          <p><b>{state.Thisai} </b></p>
+        </div>
         </div>
       </div>
       <button onClick={()=>handleDownload()} ><h1>Download Jadhagam</h1></button>

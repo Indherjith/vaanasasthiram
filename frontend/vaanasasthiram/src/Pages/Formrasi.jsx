@@ -231,7 +231,7 @@ const Formrasi = () => {
             </FormControl>
 
             <FormControl style={Tone} isRequired >
-                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>1) முன்நாள் நா-வி :</FormLabel>
+                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>1) பிறந்த நாள் நா-வி :</FormLabel>
                 <Select onChange={(e)=>{
                     let tt1 = t1; tt1.natchathiram = e.target.value;
                     setT1(tt1)
@@ -275,7 +275,7 @@ const Formrasi = () => {
             </FormControl>
 
             <FormControl style={Ttwo} isRequired >
-                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>2) முன்நாள் நா-வி :</FormLabel>
+                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>2) பிறந்த நாள் நா-வி :</FormLabel>
                 <Select onChange={(e)=>{
                     let tt2 = t2; tt2.natchathiram = e.target.value;
                     setT2(tt2)
@@ -319,7 +319,7 @@ const Formrasi = () => {
             </FormControl>
 
             <FormControl style={Tthree} isRequired>
-                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>3) முன்நாள் நா-வி :</FormLabel>
+                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>3) பிறந்த நாள் நா-வி :</FormLabel>
                 <Select onChange={(e)=>{
                     let tt3 = t3; tt3.natchathiram = e.target.value;
                     setT3(tt3)
@@ -370,7 +370,7 @@ const Formrasi = () => {
 
 
             <FormControl style={None} isRequired mb={'40px'} >
-                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>1) முன்நாள் நா-வி :</FormLabel>
+                <FormLabel color={'crimson'} width={'100%'} fontWeight={'bold'}>1) மறுநாள் நா-வி :</FormLabel>
                 <Select onChange={(e)=>{
                     let nn1 = n1; nn1.natchathiram = e.target.value;
                     setN1(nn1)
@@ -411,9 +411,7 @@ const Formrasi = () => {
                     let nn1 = n1; nn1.vinadi = e.target.value;
                     setN1(nn1)
                 }} name='AgasuVinadi' border={'1px solid blue'} width={'60px'} />
-            </FormControl>
-
-        
+            </FormControl>    
 
             
 
