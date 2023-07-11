@@ -22,7 +22,7 @@ const Formrasi = () => {
 
     const [None,setNone] = useState()
 
-    const [m1,setM1] = useState({natchathiram:"அஸ்வினி"});
+    const [m1,setM1] = useState({});
     const [m2,setM2] = useState({});
     const [m3,setM3] = useState({});
 
@@ -87,6 +87,7 @@ const Formrasi = () => {
                     let mm1 = m1; mm1.natchathiram = e.target.value;
                     setM1(mm1)
                 }}>
+                    <option value="">Select</option>
                     <option value="அஸ்வினி">அஸ்வினி</option>
                     <option value="பரணி">பரணி</option>
                     <option value="கிருத்திகை">கிருத்திகை</option>
@@ -131,6 +132,7 @@ const Formrasi = () => {
                     let mm2 = m2; mm2.natchathiram = e.target.value;
                     setM2(mm2)
                 }}>
+                    <option value="">Select</option>
                     <option value="அஸ்வினி">அஸ்வினி</option>
                     <option value="பரணி">பரணி</option>
                     <option value="கிருத்திகை">கிருத்திகை</option>
@@ -175,6 +177,7 @@ const Formrasi = () => {
                     let mm3 = m3; mm3.natchathiram = e.target.value;
                     setM3(mm3)
                 }}>
+                    <option value="">Select</option>
                     <option value="அஸ்வினி">அஸ்வினி</option>
                     <option value="பரணி">பரணி</option>
                     <option value="கிருத்திகை">கிருத்திகை</option>
@@ -236,6 +239,7 @@ const Formrasi = () => {
                     let tt1 = t1; tt1.natchathiram = e.target.value;
                     setT1(tt1)
                 }}>
+                    <option value="">Select</option>
                     <option value="அஸ்வினி">அஸ்வினி</option>
                     <option value="பரணி">பரணி</option>
                     <option value="கிருத்திகை">கிருத்திகை</option>
@@ -280,6 +284,7 @@ const Formrasi = () => {
                     let tt2 = t2; tt2.natchathiram = e.target.value;
                     setT2(tt2)
                 }}>
+                    <option value="">Select</option>
                     <option value="அஸ்வினி">அஸ்வினி</option>
                     <option value="பரணி">பரணி</option>
                     <option value="கிருத்திகை">கிருத்திகை</option>
@@ -324,6 +329,7 @@ const Formrasi = () => {
                     let tt3 = t3; tt3.natchathiram = e.target.value;
                     setT3(tt3)
                 }}>
+                    <option value="">Select</option>
                     <option value="அஸ்வினி">அஸ்வினி</option>
                     <option value="பரணி">பரணி</option>
                     <option value="கிருத்திகை">கிருத்திகை</option>
@@ -375,6 +381,7 @@ const Formrasi = () => {
                     let nn1 = n1; nn1.natchathiram = e.target.value;
                     setN1(nn1)
                 }}>
+                    <option value="">Select</option>
                     <option value="அஸ்வினி">அஸ்வினி</option>
                     <option value="பரணி">பரணி</option>
                     <option value="கிருத்திகை">கிருத்திகை</option>

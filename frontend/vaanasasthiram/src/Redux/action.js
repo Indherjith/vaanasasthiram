@@ -219,7 +219,7 @@ export const feedinput = (payload)=>(dispatch)=>{
 }
 
 export const cond1=(payload)=>(dispatch)=>{
-    // console.log("cond1",payload);
+    console.log("cond1",payload);
     let mun1 = Number(payload.m1.nazhigai * 60) + Number(payload.m1.vinadi)
     let that1 = Number(payload.t1.nazhigai * 60) + Number(payload.t1.vinadi)
     let next1 = Number(payload.n1.nazhigai * 60) + Number(payload.n1.vinadi)
@@ -233,6 +233,7 @@ export const cond1=(payload)=>(dispatch)=>{
 
     // console.log(payload.Janana,mun1,that1,next1);
     if(payload.Janana < that1){
+        console.log("if");
         Jnatch = payload.t1.natchathiram
         Aapnazi = (3600-Number(mun1))+that1;
         padham1ku = Aapnazi/4;
@@ -256,6 +257,7 @@ export const cond1=(payload)=>(dispatch)=>{
         }
     }
     else{
+        console.log("else");
         Jnatch = payload.n1.natchathiram
         Aapnazi = (3600-Number(that1))+next1;
         padham1ku = Aapnazi/4;
